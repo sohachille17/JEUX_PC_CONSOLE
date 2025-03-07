@@ -5,10 +5,22 @@ public class JeuxConsole: JeuxVideo
     {
         _configuration = configuration;
     }
+    
 
 
     public override void AfficherDetails()
     {
         //base.AfficherDetails();
+
+
+        Console.WriteLine("");
+        // Result comes here
+        Console.WriteLine("TITRE :" + _titre);
+        Console.WriteLine("ANNEE :" + _anneDeSortie);
+        Console.WriteLine("GENRE :" + _genre);
+        Console.WriteLine("CATEGORIE :" + _categoryJeux);
+        Console.WriteLine("CONFIG :" + _configuration);
+        Console.WriteLine("");
+
     }
 }
