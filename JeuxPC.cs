@@ -1,3 +1,4 @@
+/* Classe JeuxPc deriver de JeuxVideo*/
 public class JeuxPC: JeuxVideo
 {
     protected string _configuration;

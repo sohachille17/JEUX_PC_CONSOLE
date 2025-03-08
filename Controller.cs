@@ -1,6 +1,6 @@
 
 
-public static class DemarageStatic
+public static class Controller
 {
 
     /* Ajouter un nouveau jeux video */
@@ -17,7 +17,7 @@ public static class DemarageStatic
         AnnerDeSortie = Console.ReadLine()!;
         bool isConvert = int.TryParse(AnnerDeSortie, out int anneDesortie);
         
-        Console.WriteLine($"Entrer le category du :{nameof(JeuxVideo)}");
+        Console.WriteLine($"Entrer la category du :{nameof(JeuxVideo)} (Jeux pc |ou| Jeux Console)");
         string Category = Console.ReadLine()!;
         Console.WriteLine($"Entrer les configurations du :{nameof(JeuxVideo)}");
         string Configurations = Console.ReadLine()!;
@@ -38,7 +38,8 @@ public static class DemarageStatic
             {
                 var JeuxConsole = new JeuxConsole(Titre, Genre, anneDesortie, Category, Configurations);
                 ListJeux.Add(JeuxConsole);
-                Console.WriteLine($"{STATUS.SUCCESS} JEUX AJOUTER");
+                Console.WriteLine("");
+                Console.WriteLine($"***{STATUS.SUCCESS}*** JEUX AJOUTER");
             }else
             {
                 Console.WriteLine($"La category {Category} n'est pas valide");
@@ -58,6 +59,7 @@ public static class DemarageStatic
     {
 
         /* Show the list of available movies to the user */
+        Console.WriteLine("** List des jeux video disponible **");
         for(int i = 0; i < ListJeux.Count; i++)
         {
 
@@ -121,6 +123,7 @@ public static class DemarageStatic
                         Configurations
                     );
 
+                    Console.WriteLine("");
                     Console.WriteLine($"Le jeux {ListJeux[Indice - 1].TITRE} a ete mise ajours");
                 } 
         }
@@ -151,6 +154,9 @@ public static class DemarageStatic
                 Console.WriteLine("L'indice n'existe pas");
             }else{
                 ListJeux.RemoveAt(Indice - 1);
+                Console.WriteLine("");
+                Console.WriteLine(Indice - 1);
+                Console.WriteLine($"**{STATUS.SUCCESS}** Le Jeux a ete supprimer merci.");
             }
             
         }
@@ -161,12 +167,21 @@ public static class DemarageStatic
 
     public static void GetAllJeuxVideo(List<JeuxVideo> JeuxVideosList)
     {
-        for(int i = 0; i < JeuxVideosList.Count; i++)
+        Console.WriteLine("*Listes des jeux video*");
+        if(JeuxVideosList.Count > 0)
         {
-            Console.WriteLine($"======== {i + 1} =======");
-            JeuxVideosList[i].AfficherDetails();
-            Console.WriteLine($"======== END =======");
-        }
+           
+            for(int i = 0; i < JeuxVideosList.Count; i++)
+            {
+                Console.WriteLine($"              [{i + 1}]      ");
+                Console.WriteLine($"-----------------------------");
+                JeuxVideosList[i].AfficherDetails();
+                Console.WriteLine($"-----------------------------");
+            }
+        }else
+        {   Console.WriteLine($"**{STATUS.NOTFOUND}** Desolose mais le stock des jeux video est vide");}
+     
+
     }
 
     
